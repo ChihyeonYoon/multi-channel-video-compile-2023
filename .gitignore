@@ -1,1 +1,7 @@
 compiled_sample/
+!compiled_sample/.gitkeep
+
+compile_materials/
+!compile_materials/.gitkeep
+
+speaking_detection_model_weight.pth
