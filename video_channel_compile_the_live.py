@@ -43,7 +43,7 @@ if __name__ == '__main__':
     # ================== selected channel adjusting ==================
     adjusted_channels = []
     for i in range(0, len(selected_channels), args.switching_interval):
-        batch = selected_channels[i:i+15]
+        batch = selected_channels[i:i+args.switching_interval]
         # print(batch)
         mcv = Counter(batch).most_common(1)[0][0]
         adjusted_channels = adjusted_channels+([mcv]*len(batch))
@@ -90,11 +90,12 @@ if __name__ == '__main__':
             break
 
         if str(frame_n) in result_dict.keys():
-            print("#Frame: {}/{} -------------------------".format(frame_n, end_frame))
-            
             selected_channel = adjusted_channels[frame_n - start_frame]
-            print('\tselected_channel: ', selected_channel)
 
+            if frame_n % 100 == 0 or frame_n == start_frame or frame_n == end_frame:
+                print("#Frame: {}/{} -------------------------".format(frame_n, end_frame))
+                print('\tselected_channel: ', selected_channel)
+                
             if selected_channel == 0:
                 cv2.putText(img=frame_ch0, text="CAM #W", org= (resolution[0]-150, resolution[-1]-50), fontFace=cv2.FONT_HERSHEY_DUPLEX, fontScale=1, color=(255, 255, 255), thickness=2)
                 output_video.write(frame_ch0)

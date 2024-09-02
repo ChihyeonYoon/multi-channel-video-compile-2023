@@ -3,7 +3,7 @@ video_ch1_path="compile_materials/thelive/C.mp4"
 video_ch2_path="compile_materials/thelive/D.mp4"
 video_chMC_path="compile_materials/thelive/MC.mp4"
 
-start_time=60
+start_time=0
 end_time=180 # 1분 ~ 3분 구간 -> start_time=60, end_time=180 (단위: 초)
 switching_interval=15 # fps=30 이므로, 15 -> 0.5초마다 스위칭 
 
